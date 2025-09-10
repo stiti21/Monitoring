@@ -1,0 +1,24 @@
+sudo apt update
+
+sudo apt install -y apt-transport-https software-properties-common
+
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+
+sudo mkdir -p /etc/apt/keyrings
+
+ curl -fsSL https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+ 
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list > /dev/null
+
+sudo apt update
+
+
+sudo apt install grafana -y
+
+sudo systemctl enable grafana-server
+
+sudo systemctl start grafana-server
+
+
+http://192.168.1.113:3000
+
