@@ -15,9 +15,13 @@ sudo apt update
 
 sudo apt install grafana -y
 
-sudo systemctl enable grafana-server
+sudo -u grafana /usr/sbin/grafana-server \
+  --homepath=/usr/share/grafana \
+  --config=/etc/grafana/grafana.ini \
+  --packaging=deb \
+  --configOverrides=cfg:paths.data=/var/lib/grafana \
+  web
 
-sudo systemctl start grafana-server
 
 
 http://192.168.1.113:3000
