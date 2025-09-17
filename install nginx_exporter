@@ -1,0 +1,16 @@
+wget https://github.com/nginx/nginx-prometheus-exporter/releases/download/v1.5.0/nginx-prometheus-exporter_1.5.0_linux_amd64.tar.gz
+
+
+tar -xzvf nginx-prometheus-exporter_1.5.0_linux_amd64.tar.gz
+
+
+./nginx-prometheus-exporter -nginx.scrape-uri http://localhost/nginx_status
+
+
+#add this to prometheus.yml:
+
+scrape_configs:
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['localhost:9113']
+
