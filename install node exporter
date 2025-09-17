@@ -10,6 +10,11 @@ sudo cp node_exporter-1.8.1.linux-amd64/node_exporter /usr/local/bin/
 sudo systemctl daemon-reload
 /usr/local/bin/node_exporter --no-collector.powersupplyclass
 
+add this to prometheus.yml:
+
+- job_name: "node_exporter"
+    static_configs:
+      - targets: ["localhost:9100"]
 
 
 http://192.168.1.113:9100/metrics
