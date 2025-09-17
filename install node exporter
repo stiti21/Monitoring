@@ -11,4 +11,8 @@ sudo systemctl daemon-reload
 /usr/local/bin/node_exporter --no-collector.powersupplyclass
 
 
+
 http://192.168.1.113:9100/metrics
+
+
+#./node_exporter --web.listen-address="0.0.0.0:9100" --no-collector.powersupplyclass
